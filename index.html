@@ -258,6 +258,18 @@
   .proj-grid dd, .proj-facts dd, footer, .filters input, .filters select, .chart-note { font-size: 1.1rem; }
   .emenda-row > div .val, .proj-facts dd.val { font-size: 1.1rem; }
   .e-label, .proj-facts dt, .proj-grid dt { font-size: 1.1rem; }
+  /* destaques de títulos e espaçamento entre projetos */
+  .proj-name { color: var(--blue); font-size: 1.7rem; font-weight: 700; }
+  .projects { gap: 76px; }
+  #projects, .projects { margin-top: 8px; }
+  section h2 { font-size: 1.6rem; font-weight: 700; }
+  .chart h3 { font-size: 1.2rem; font-weight: 700; color: var(--blue); }
+  @media (max-width: 640px) {
+    .proj-name { font-size: 1.4rem; }
+    .projects { gap: 56px; }
+    section h2 { font-size: 1.4rem; }
+    .chart h3 { font-size: 1.1rem; }
+  }
 </style>
 </head>
 <body>
