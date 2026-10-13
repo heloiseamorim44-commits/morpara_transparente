@@ -355,6 +355,10 @@
   section h2 { border-left-color: var(--navy); }
   header.top { border-bottom-color: var(--accent); }
   .info-panel .sub, section .info-panel .sub { max-width: none; }
+  /* computador: palavras inteiras, sem separação silábica (celular não muda) */
+  @media (min-width: 641px) {
+    .hero p, section .sub, .info-panel .sub, .emenda-finalidade, .proj-desc, .dlg-text, .proj-grid dd, footer { hyphens: manual; -webkit-hyphens: manual; }
+  }
 </style>
 </head>
 <body>
