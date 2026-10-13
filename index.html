@@ -251,7 +251,7 @@
     .emenda-row { grid-template-columns: minmax(0, 1fr); }
   }
   /* textos justificados */
-  .hero p, section .sub, .info-panel .sub, .emenda-finalidade, .proj-desc, .dlg-text, .proj-grid dd, footer { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .hero p, section .sub, .info-panel .sub, .emenda-finalidade, .proj-desc, .dlg-text, .proj-grid dd, footer { text-align: justify; hyphens: manual; -webkit-hyphens: manual; }
   /* padrão único para todo texto normal (sem destaque) */
   body { -webkit-text-stroke: 0; }
   .hero p, section .sub, .info-panel .sub, .emenda-row > div, .emenda-finalidade, .proj-desc, .dlg-text,
@@ -359,6 +359,7 @@
   @media (min-width: 641px) {
     .hero p, section .sub, .info-panel .sub, .emenda-finalidade, .proj-desc, .dlg-text, .proj-grid dd, footer { hyphens: manual; -webkit-hyphens: manual; }
   }
+  * { hyphens: manual !important; -webkit-hyphens: manual !important; }
 </style>
 </head>
 <body>
@@ -396,7 +397,7 @@
 <section class="wrap info-block">
   <div class="info-panel">
     <h2>O que são emendas?</h2>
-    <p class="sub">Uma emenda parlamentar é um mecanismo que permite a deputados e senadores destinar parte do orçamento público a ações e obras específicas, escolhidas por eles, que beneficiem diretamente o município — como as listadas abaixo, direcionadas a Morpará. As emendas desta página são do tipo “transferência especial” (conhecidas como emendas Pix): o dinheiro vai direto para a prefeitura, que o aplica nas obras e serviços do município.</p>
+    <p class="sub">Uma emenda parlamentar é um mecanismo que permite a deputados e senadores destinar parte do orçamento público a ações e obras específicas, escolhidas por eles, que beneficiem diretamente o município, como as listadas abaixo, direcionadas a Morpará. As emendas desta página são do tipo “transferência especial” (conhecidas como emendas Pix): o dinheiro vai direto para a prefeitura, que o aplica nas obras e serviços do município.</p>
   </div>
 </section>
 
@@ -448,7 +449,7 @@
 </section>
 
 <footer class="wrap">
-  <strong>Fonte dos dados:</strong> Transferegov – Transferências Especiais (API de dados abertos do Governo Federal), favorecido Município de Morpará (CNPJ 13.798.574/0001-07), consultado em 12/10/2026. Confira em <a href="https://www.transferegov.gestao.gov.br" target="_blank" rel="noopener">transferegov.gestao.gov.br</a> e no <a href="https://portaldatransparencia.gov.br" target="_blank" rel="noopener">Portal da Transparência</a>.
+  <strong>Fonte dos dados:</strong> Transferegov, Transferências Especiais (API de dados abertos do Governo Federal), favorecido Município de Morpará (CNPJ 13.798.574/0001-07), consultado em 12/10/2026. Confira em <a href="https://www.transferegov.gestao.gov.br" target="_blank" rel="noopener">transferegov.gestao.gov.br</a> e no <a href="https://portaldatransparencia.gov.br" target="_blank" rel="noopener">Portal da Transparência</a>.
 </footer>
 </div>
 
