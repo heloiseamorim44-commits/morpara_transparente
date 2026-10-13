@@ -271,6 +271,29 @@
     .chart h3 { font-size: 1.1rem; }
   }
   .hero p.updated { margin: 0; color: var(--blue); text-align: left; font-size: 1.1rem; }
+  /* visual institucional e sóbrio */
+  :root { --navy: #0A2A47; --blue: #1F4E79; --blue-soft: #E6ECF3; --line: #CBD3DC; }
+  header.top { background: var(--navy); border-bottom: 4px solid var(--gold); }
+  .hero-band { background: var(--navy); color: #FFFFFF; }
+  .hero-band .hero { padding: 44px 24px 48px; }
+  .hero-band .hero h1 { color: #FFFFFF; font-size: clamp(1.7rem, 3.6vw, 2.3rem); font-weight: 700; max-width: 26ch; letter-spacing: 0; }
+  .hero-band .hero p { color: #E3EAF2; }
+  .hero-band .hero p.updated { color: #FFFFFF; margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.28); max-width: 58ch; }
+  .info-panel { border-radius: 8px; border-left: 5px solid var(--navy); background: var(--blue-soft); }
+  section h2 { color: var(--navy); border-left: 4px solid var(--navy); }
+  .stats { background: var(--line); }
+  .stat, .stat:nth-child(n) { border-top: 4px solid var(--navy); }
+  .stat .num { color: var(--navy); font-weight: 700; }
+  .stat .label { font-weight: 700; }
+  .emenda-card { border-radius: 8px; border-color: var(--line); }
+  .badge { border-radius: 4px; }
+  .proj-head .badge { border-radius: 4px; }
+  .btn { border-radius: 6px; border-width: 2px; }
+  .btn.primary { background: var(--navy); border-color: var(--navy); color: #FFFFFF; }
+  .fs-controls button { border-radius: 6px; }
+  .proj-name, .chart h3 { color: var(--navy); }
+  .chart { border-radius: 8px; }
+  footer { border-top: 1px solid var(--line); padding-top: 24px; }
 </style>
 </head>
 <body>
@@ -287,10 +310,12 @@
   </div>
 </header>
 
+<div class="hero-band">
 <div class="hero wrap">
   <h1>Para onde vão as emendas parlamentares do nosso município?</h1>
   <p>Um painel público e simples para acompanhar os recursos enviados por deputados e senadores a Morpará, e os projetos que estão sendo financiados com esse dinheiro.</p>
   <p class="updated"><strong>Dados atualizados em 12/10/2026</strong></p>
+</div>
 </div>
 
 <section class="wrap info-block">
@@ -405,11 +430,11 @@ const STATUS_COLOR = { concluido: 'var(--green)', andamento: 'var(--orange)', pl
 
 function renderCharts(list) {
   const byAno = {}; list.forEach(e => byAno[e.ano] = (byAno[e.ano]||0)+1);
-  vbars('chartAno', Object.entries(byAno).sort((a,b)=>a[0]-b[0]).map(([k,v])=>({k,v,color:'var(--green)'})), v => v);
+  vbars('chartAno', Object.entries(byAno).sort((a,b)=>a[0]-b[0]).map(([k,v])=>({k,v,color:'var(--navy)'})), v => v);
 
   const byArea = {}; list.forEach(e => byArea[e.area] = (byArea[e.area]||0)+e.valor);
   const fmtCompact = v => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', notation: 'compact', maximumFractionDigits: 1 }).format(v);
-  vbars('chartArea', Object.entries(byArea).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({k,v,color:'var(--blue)'})), fmtCompact);
+  vbars('chartArea', Object.entries(byArea).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({k,v,color:'var(--navy)'})), fmtCompact);
 
   const byStatus = { concluido:0, andamento:0, planejado:0 }; list.forEach(e => byStatus[e.status]++);
   vbars('chartStatus', Object.entries(byStatus).map(([k,v])=>({k:statusLabel[k],v,color:STATUS_COLOR[k]})), v => v);
