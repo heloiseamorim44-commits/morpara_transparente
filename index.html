@@ -298,6 +298,16 @@
   .hero-band .hero p { color: #FFFFFF; }
   .hero-band .hero p.updated { border-top: 0; padding-top: 0; margin-top: 18px; font-size: 0.95rem; }
   .hero-band .hero { padding: 44px 24px 26px; }
+  .scroll-hint { display: none; margin: 8px 0 0; font-size: 0.9rem; text-align: center; color: var(--blue); }
+  @media (max-width: 640px) {
+    .scroll-hint { display: block; }
+    .chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
+    #chartArea .vbars { width: max-content; min-width: 100%; gap: 18px; padding: 0 6px; }
+    #chartArea .vbar-col { flex: 0 0 6.5rem; min-width: 6.5rem; }
+    #chartArea .vbar { max-width: 48px; }
+    #chartArea .vbar-value { font-size: 0.9rem; }
+    #chartArea .vbar-label { font-size: 0.9rem; }
+  }
 </style>
 </head>
 <body>
@@ -366,7 +376,7 @@
       <div class="chart"><h3>Emendas por ano</h3><div id="chartAno"></div></div>
       <div class="chart"><h3>Situação de execução</h3><div id="chartStatus"></div></div>
     </div>
-    <div class="chart"><h3>Valor por área</h3><div class="chart-scroll"><div id="chartArea"></div></div></div>
+    <div class="chart"><h3>Valor por área</h3><div class="chart-scroll"><div id="chartArea"></div></div><p class="scroll-hint">Arraste para o lado para ver todas as áreas</p></div>
   </div>
 </section>
 
@@ -432,13 +442,20 @@ function vbars(containerId, entries, formatValue) {
 
 const STATUS_COLOR = { concluido: 'var(--green)', andamento: 'var(--orange)', planejado: 'var(--red)' };
 
+const AREA_CURTA = {
+  'Infraestrutura Urbana': 'Infraestrutura',
+  'Infraestrutura Urbana e Serviços Urbanos': 'Infra. e Serviços',
+  'Abastecimento de Água (Zona Rural)': 'Água Rural',
+  'Desporto e Lazer': 'Esporte e Lazer'
+};
+
 function renderCharts(list) {
   const byAno = {}; list.forEach(e => byAno[e.ano] = (byAno[e.ano]||0)+1);
   vbars('chartAno', Object.entries(byAno).sort((a,b)=>a[0]-b[0]).map(([k,v])=>({k,v,color:'var(--navy)'})), v => v);
 
   const byArea = {}; list.forEach(e => byArea[e.area] = (byArea[e.area]||0)+e.valor);
   const fmtCompact = v => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', notation: 'compact', maximumFractionDigits: 1 }).format(v);
-  vbars('chartArea', Object.entries(byArea).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({k,v,color:'var(--navy)'})), fmtCompact);
+  vbars('chartArea', Object.entries(byArea).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({k:AREA_CURTA[k]||k,v,color:'var(--navy)'})), fmtCompact);
 
   const byStatus = { concluido:0, andamento:0, planejado:0 }; list.forEach(e => byStatus[e.status]++);
   vbars('chartStatus', Object.entries(byStatus).map(([k,v])=>({k:statusLabel[k],v,color:STATUS_COLOR[k]})), v => v);
