@@ -252,12 +252,12 @@
   }
   /* textos justificados */
   .hero p, section .sub, .info-panel .sub, .emenda-finalidade, .proj-desc, .dlg-text, .proj-grid dd, footer { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
-  /* valores maiores nos cartões de emendas */
-  .emenda-row > div { font-size: 1.2rem; }
-  .emenda-row .e-label { font-size: 1.05rem; }
-  /* texto normal um pouco mais grosso (Arial não tem peso intermediário) */
-  body { -webkit-text-stroke: 0.3px currentColor; }
-  h1, h2, h3, h4, strong, b, dt, .val, .num, .e-label, .badge, .btn, .fs-controls button, .stat .label { -webkit-text-stroke: 0; }
+  /* padrão único para todo texto normal (sem destaque) */
+  body { -webkit-text-stroke: 0; }
+  .hero p, section .sub, .info-panel .sub, .emenda-row > div, .emenda-finalidade, .proj-desc, .dlg-text,
+  .proj-grid dd, .proj-facts dd, footer, .filters input, .filters select, .chart-note { font-size: 1.1rem; }
+  .emenda-row > div .val, .proj-facts dd.val { font-size: 1.1rem; }
+  .e-label, .proj-facts dt, .proj-grid dt { font-size: 1.1rem; }
 </style>
 </head>
 <body>
